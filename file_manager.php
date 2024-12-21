@@ -1,10 +1,8 @@
 <?php
 
 function fileManager($action, $path, $newContent = '') {
-    // Base directory consentita (adatta secondo il contesto)
     $baseDir = '/var/www';
-
-    // Validazione percorso
+    
     $realPath = realpath(dirname($path));
     if (!$realPath || strpos($realPath, $baseDir) !== 0) {
         echo "Errore: Il percorso $path non è valido o non rientra nella directory consentita.";
@@ -16,7 +14,6 @@ function fileManager($action, $path, $newContent = '') {
         return;
     }
 
-    // Controlli di permessi
     if (!is_writable($baseDir)) {
         echo "Errore: La directory base non è scrivibile.";
         return;
